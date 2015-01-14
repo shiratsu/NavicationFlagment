@@ -1,6 +1,7 @@
 package shiratsu.chob.co.jp.navicationflagment;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -21,7 +22,7 @@ import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks,ImageFragment.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -52,18 +53,16 @@ public class MainActivity extends ActionBarActivity
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
-//        if(position == 0){
-//            fragmentManager.beginTransaction()
-//                    .replace(R.id.container,ImageFragment.newInstance(R.drawable.golf_narita))
-//                    .commit();
-//        }else{
-//            fragmentManager.beginTransaction()
-//                    .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-//                    .commit();
-//        }
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                .commit();
+        if(position == 0){
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container,ImageFragment.newInstance(R.drawable.golf_narita))
+                    .commit();
+        }else{
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                    .commit();
+        }
+
     }
 
     public void onSectionAttached(int number) {
@@ -114,6 +113,11 @@ public class MainActivity extends ActionBarActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+        
     }
 
     /**
